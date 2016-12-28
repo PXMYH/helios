@@ -34,7 +34,7 @@ class RealtorSpider(CrawlSpider):
             mls_item['address'] = selector.css('address.truncate::text').extract()
             mls_item['mls_num'] = selector.css('div.col-md-6.sm-text-left.md-text-right').xpath('small[contains(., "MLS")]/span/text()').extract()
             mls_item['maint_fee'] = selector.css('div.col-md-6').xpath('small[contains(., "Maint")]/span/text()').extract()
-            mls_item['price'] = selector.css('div.price span::text')
+            mls_item['price'] = selector.css('div.price span::text').extract()
             # need to post processing price list (price, structure, sqft)
             mls_item['built_year'] = selector.css('div.col-md-6.sm-text-left.md-text-right').xpath('small[contains(., "built")]/span/text()').extract()
             
