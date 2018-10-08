@@ -9,8 +9,11 @@ class CraigbotSpider(scrapy.Spider):
 
     def parse(self, response):
         print ("parsing the response {0}".format(response.body))
-        titles = response.xpath('//a[@class="result-title hdrlnk"]/text()').extract()
-        print ("titles: {0}".format(titles))
-        for title in titles:
-            yield {'Title': title}
-        # yield scraped_info
+        listings = response.xpath('//p[@class="result-info"]')
+        print ("\n*************\nlistings: {0}".format(listings))
+        for listing in listings:
+            # title = listing.xpath('.//a[@class="result-title hdrlnk"]/text().extract()')
+            title = listing.xpath('a/text()').extract_first()
+            price = listing.xpath('span[@class="result-price"]/text()').extract()
+            area = listing.xpath('span[@class="housing"]/text()').extract()
+            yield {'Title': title, 'Price': price, 'Area': area}
