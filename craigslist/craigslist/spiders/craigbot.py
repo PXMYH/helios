@@ -13,8 +13,7 @@ class CraigbotSpider(scrapy.Spider):
         listings = response.xpath('//p[@class="result-info"]')
         print ("\n*************\nlistings: {0}".format(listings))
         for listing in listings:
-            # title = listing.xpath('.//a[@class="result-title hdrlnk"]/text().extract()')
-            title = listing.xpath('a/text()').extract_first()
+            title = listing.xpath('a[@class="result-title hdrlnk"]/text()').extract_first()
             price = listing.xpath('span[@class="result-meta"]/span[@class="result-price"]/text()').extract()
             neighbourhood = listing.xpath('span[@class="result-meta"]/span[@class="result-hood"]/text()').extract()
             area_list = listing.xpath('span[@class="result-meta"]/span[@class="housing"]/text()').extract()
