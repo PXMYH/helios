@@ -90,4 +90,4 @@ DOWNLOAD_DELAY = 3
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 # Fix output columns
-FEED_EXPORT_FIELDS = ['Title','Hood', 'Price', 'Area']
+FEED_EXPORT_FIELDS = ['Title','Hood', 'Price', 'Area', 'UnitPrice']

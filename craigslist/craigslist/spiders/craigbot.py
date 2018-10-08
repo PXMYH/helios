@@ -38,7 +38,13 @@ class CraigbotSpider(scrapy.Spider):
                 if not space:
                     space = "0ft"
             
-            yield {'Title': title, 'Hood': neighbourhood, 'Price': price, 'Area': space}
+            space_num = space.strip('ft')
+            if int(space_num) != 0 and space and price:
+                unit_price = round(int(str(price[0]).strip('$')) / int(space_num), 1)
+            else:
+                unit_price = -1
+
+            yield {'Title': title, 'Hood': neighbourhood, 'Price': price, 'Area': space, 'UnitPrice': unit_price}
 
         relative_next_url = response.xpath('//a[@class="button next"]/@href').extract_first()
         absolute_next_url = response.urljoin(relative_next_url)
