@@ -20,5 +20,12 @@ Requirements:
   - if you don't want to have Cython-based extensions then disable through flag
   `pip install cassandra-driver --no-cython`
 
+### Setup workspace
+
+```bash
+pipenv --two
+pipeenv lock
+```
+
 [Note]
 Commits are associated with GPG signing key
