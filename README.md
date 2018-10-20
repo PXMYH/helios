@@ -34,12 +34,14 @@ for local dev:
 # assume the following command is run from root directory and cluster nodes are within the same VM
 docker swarm init
 
-docker config create cassandra_config ./res/cassandra.yaml
-docker service create --name cassandra_cluster_1 -p 9042:9042 -d cassandra:3.11.3
+docker config create cassandra.yaml ./res/cassandra.yaml
+docker service create --replicas 1 --name cassandra_cluster --config source=cassandra.yaml,target=/etc/cassandra/cassandra.yaml,mode=777 -d cassandra:3.11.3
 
-docker service create --name cassandra_cluster_2 -d -e CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' cassandra_cluster_1)" cassandra:3.11.3
+# to check running service
+docker service ps cassandra
 
-docker service create --name cassandra_cluster_3 -d -e CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' cassandra_cluster_1)" cassandra:3.11.3
+# to inspect service
+docker service inspect --pretty cassandra
 ```
 
 [Note]
