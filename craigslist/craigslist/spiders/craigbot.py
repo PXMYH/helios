@@ -54,12 +54,19 @@ class CraigbotSpider(scrapy.Spider):
     def parse_page(self, response):
         description = "".join(line for line in response.xpath('//*[@id="postingbody"]/text()').extract())
         posted_timestamp = response.xpath('//p[@class="postinginfo reveal"]/time[@class="date timeago"]/text()').extract()
+        bed_bath = "".join(" " + line for line in response.xpath('//p[@class="attrgroup"]/span[@class="shared-line-bubble"]/b/text()').extract())
+        availablity = response.xpath('//p[@class="attrgroup"]/span[@class="housing_movein_now property_date shared-line-bubble"]/text()').extract()
+        other_attr = response.xpath('//p[@class="attrgroup"]/span/text()').extract()
+
         # TODO: parse and get count of items and sanitize index before using it
         create_timestamp, update_timestamp = [posted_timestamp[i].strip() for i in range(2)]
 
         response.meta['Description'] = description
         response.meta['create_timestamp'] = create_timestamp
         response.meta['update_timestamp'] = update_timestamp
+        response.meta['bed_bath'] = bed_bath
+        response.meta['availablity'] = availablity
+        response.meta['other_attr'] = other_attr
 
         yield response.meta
 
