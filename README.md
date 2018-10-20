@@ -35,13 +35,19 @@ for local dev:
 docker swarm init
 
 docker config create cassandra.yaml ./res/cassandra.yaml
-docker service create --replicas 1 --name cassandra_cluster --config source=cassandra.yaml,target=/etc/cassandra/cassandra.yaml,mode=777 -d cassandra:3.11.3
+docker service create --replicas 3 --name cassandra_cluster -d cassandra:3.11.3-mh
 
 # to check running service
 docker service ps cassandra
 
 # to inspect service
 docker service inspect --pretty cassandra
+```
+
+### Run the crawler
+
+```bash
+scrapy crawl craigbot -o craigslist_result.csv
 ```
 
 [Note]

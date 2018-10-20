@@ -23,6 +23,7 @@ class CraigbotSpider(scrapy.Spider):
             title = listing.xpath('a[@class="result-title hdrlnk"]/text()').extract_first()
             price = listing.xpath('span[@class="result-meta"]/span[@class="result-price"]/text()').extract()
             neighbourhood = listing.xpath('span[@class="result-meta"]/span[@class="result-hood"]/text()').extract()
+            posted_time = listing.xpath('span[@class="postinginfo reveal"]')
             area_list = listing.xpath('span[@class="result-meta"]/span[@class="housing"]/text()').extract()
 
             # processing neighbourhood info
