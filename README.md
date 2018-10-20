@@ -27,5 +27,17 @@ pipenv --two
 pipeenv lock
 ```
 
+### Setup Cassandra Cluster
+
+for local dev:
+```bash
+# assume the following command is run from root directory
+docker run --name cassandra_cluster_1 -d cassandra:3.11.3 -Dcassandra.config=./res/cassandra.yaml
+
+docker run --name cassandra_cluster_2 -d -e CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' cassandra_cluster_1)" cassandra:3.11.3 -Dcassandra.config=./res/cassandra.yaml
+
+docker run --name cassandra_cluster_3 -d -e CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' cassandra_cluster_1)" cassandra:3.11.3 -Dcassandra.config=./res/cassandra.yaml
+```
+
 [Note]
 Commits are associated with GPG signing key
