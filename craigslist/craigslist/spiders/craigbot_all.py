@@ -2,8 +2,8 @@
 import scrapy
 from scrapy import Request
 
-class CraigbotSpider(scrapy.Spider):
-    name = 'craigbot'
+class CraigbotAllSpider(scrapy.Spider):
+    name = 'craigbot_all'
     allowed_domains = ['craigslist.ca']
     # TODO: accept search URL from command line
     # tweak start_urls to get to the result faster
@@ -16,9 +16,9 @@ class CraigbotSpider(scrapy.Spider):
         print ("\n*************\nlistings: {0}".format(listings))
         for listing in listings:
             # get relative url and construct absolute url
-            relative_url = listing.xpath('a/@href').extract_first()
+            # relative_url = listing.xpath('a/@href').extract_first()
             # print ("relative url {0}".format(relative_url))
-            absolute_url = response.urljoin(relative_url)
+            # absolute_url = response.urljoin(relative_url)
 
             title = listing.xpath('a[@class="result-title hdrlnk"]/text()').extract_first()
             price = listing.xpath('span[@class="result-meta"]/span[@class="result-price"]/text()').extract()
@@ -47,19 +47,6 @@ class CraigbotSpider(scrapy.Spider):
             yield {'Title': title, 'Hood': neighbourhood, 'Price': price, 'Area': space, 'UnitPrice': unit_price}
 
         relative_next_url = response.xpath('//a[@class="button next"]/@href').extract_first()
-        # absolute_next_url = response.urljoin(relative_next_url)
+        absolute_next_url = response.urljoin(relative_next_url)
         
-        yield Request(absolute_url, callback=self.parse_page, meta={'URL': absolute_url})
-
-    def parse_page(self, response):
-        description = "".join(line for line in response.xpath('//*[@id="postingbody"]/text()').extract())
-        posted_timestamp = response.xpath('//p[@class="postinginfo reveal"]/time[@class="date timeago"]/text()').extract()
-        # TODO: parse and get count of items and sanitize index before using it
-        create_timestamp, update_timestamp = [posted_timestamp[i].strip() for i in range(2)]
-
-        response.meta['Description'] = description
-        response.meta['create_timestamp'] = create_timestamp
-        response.meta['update_timestamp'] = update_timestamp
-
-        yield response.meta
-
+        yield Request(absolute_next_url, callback=self.parse)

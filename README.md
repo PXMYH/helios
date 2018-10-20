@@ -20,7 +20,7 @@ Requirements:
   - if you don't want to have Cython-based extensions then disable through flag
   `pip install cassandra-driver --no-cython`
 
-### Setup workspace
+## Setup workspace
 
 ```bash
 pipenv --two
@@ -30,6 +30,7 @@ pipeenv lock
 ### Setup Cassandra Cluster
 
 for local dev:
+
 ```bash
 # assume the following command is run from root directory and cluster nodes are within the same VM
 docker swarm init
