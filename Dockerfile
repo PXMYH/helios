@@ -4,8 +4,10 @@ LABEL maintainer Michael Hu
 RUN apk --update --no-cache add gcc g++ linux-headers libxslt-dev libxml2-dev libffi-dev openssl-dev
 RUN pip install --upgrade pip scrapy
 
-WORKDIR /
-COPY craigslist /
-COPY src /
+WORKDIR /opt
+COPY craigslist /opt
+COPY src /opt
 
-CMD [ "python", "main.py" ]
+# TODO: add health check to container
+
+CMD [ "python", "/opt/src/main.py" ]
