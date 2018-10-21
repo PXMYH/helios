@@ -7,6 +7,8 @@ name = "pypi"
 scrapy = "*"
 cython = "*"
 cassandra-driver = "*"
+flask = "*"
+backports-weakref = "*"
 
 [dev-packages]
 
