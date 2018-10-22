@@ -7,8 +7,8 @@ from cassandra.query import SimpleStatement
 
 class Cassandra():
 
-    def __init__(self):
-        self.cluster = Cluster(['127.0.0.1'],
+    def __init__(self, cluster_ips):
+        self.cluster = Cluster(cluster_ips,
                           load_balancing_policy=DCAwareRoundRobinPolicy(local_dc='US_EAST'),
                            port=9042)
         self.session = self.cluster.connect()
@@ -32,9 +32,6 @@ class Cassandra():
     def info(self):
         print ("Cassandra cluster debug information:")
         
-
-
-
 if __name__ == "__main__":
     cassandra_instance = Cassandra()
     print ("initiating Canssadra DB connection and information dump")
