@@ -1,1 +1,1 @@
-from api.items import items
+from api.items import search

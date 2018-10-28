@@ -10,7 +10,6 @@ cassandra-driver = "*"
 flask = "*"
 backports-weakref = "*"
 connexion = "*"
-flask-injector = "*"
 fastavro = "*"
 
 [dev-packages]
