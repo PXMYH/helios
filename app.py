@@ -1,16 +1,6 @@
 import connexion
 from connexion.resolver import RestyResolver
-from flask_injector import FlaskInjector
-from injector import Binder
-
 from services.provider import ItemsProvider
-
-def configure(binder):
-    binder.bind(
-        ItemsProvider,
-        ItemsProvider([{"Name": "Test 1"}])
-    )
-
 
 if __name__ == '__main__':
     app = connexion.FlaskApp(__name__, specification_dir='swagger/')
