@@ -11,3 +11,5 @@ COPY src /opt
 # TODO: add health check to container
 
 CMD [ "python", "/opt/src/main.py" ]
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "curl http://127.0.0.1:9999 || exit 1" ]
