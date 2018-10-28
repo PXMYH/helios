@@ -3,12 +3,34 @@ swagger: "2.0"
 info:
   title: "helios"
   version: "1.0"
+  license: 
+    name: MIT
 
 basePath: /v1
 
+consumes:
+  - application/json
+produces:
+  - application/json
+
 paths:
-  /items/:
+  /room/:
+    post:
+      operationId: api.room.class_instance.post
+      parameters:
+        - in: body
+          name: room
+          required: true
+          schema:
+            $ref: '#/definitions/Room'
+      responses:
+        '201':
+          description: 'Room indexed'
+          schema: 
+            $ref: '#/definitions/Room'
+
     get:
+      operationId: api.room.class_instance.get
       responses:
         '200':
           description: 'Fetch a list of items'
@@ -16,6 +38,27 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Item'
+    
+    patch:
+      operationId: api.room.class_instance.path
+      responses:
+        '200': 
+          description: 'Update a room information'
+          parameters:
+          - in: body
+            name: room
+            required: true
+            schema:
+              $ref: '#/definitions/Room'
+
+    delete:
+      operationId: api.room.class_instance.path
+      responses:
+        '200':
+          description: 'Delete a room'
+          schema: 
+          $ref: '#/definitions/Room'
+
 
 definitions:
   Item:
@@ -25,3 +68,22 @@ definitions:
         type: integer
         format: int64
       name: { type: string }
+  Room:
+    type: object
+    required:
+      - title
+      - hood
+      - price
+      - area
+      - unit_price
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      price:
+        type: integer
+      area:
+        type: string
+      unit_price:
+        type: string
