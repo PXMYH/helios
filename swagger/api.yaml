@@ -1,4 +1,4 @@
-swagger: "2.0"
+openapi: 3.0.0
 
 info:
   title: "helios"
@@ -40,7 +40,7 @@ paths:
               $ref: '#/definitions/Item'
     
     patch:
-      operationId: api.room.class_instance.path
+      operationId: api.room.class_instance.patch
       responses:
         '200': 
           description: 'Update a room information'
@@ -52,7 +52,7 @@ paths:
               $ref: '#/definitions/Room'
 
     delete:
-      operationId: api.room.class_instance.path
+      operationId: api.room.class_instance.delete
       responses:
         '200':
           description: 'Delete a room'

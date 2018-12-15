@@ -53,3 +53,11 @@ scrapy crawl craigbot -o craigslist_result.csv
 
 [Note]
 Commits are associated with GPG signing key
+
+### Run the app
+
+```bash
+# on the root directory
+export FLASK_ENV=development
+flash run
+```
