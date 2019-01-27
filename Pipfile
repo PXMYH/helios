@@ -13,6 +13,7 @@ connexion = {extras = ["swagger-ui"],version = "*"}
 fastavro = "*"
 pylint = "*"
 pyyaml = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 

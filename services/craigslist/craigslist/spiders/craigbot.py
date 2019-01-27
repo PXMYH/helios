@@ -51,3 +51,6 @@ class CraigbotSpider(scrapy.Spider):
         print ("[HELIOS] Relative Next URL: {0}".format(relative_next_url))
         print ("[HELIOS] Absolute Next URL: {0}".format(absolute_next_url))
         yield Request(absolute_next_url, callback=self.parse)
+    
+    def save_to_db(self):
+        pass

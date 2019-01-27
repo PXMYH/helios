@@ -59,6 +59,12 @@ Commits are associated with GPG signing key
 ### Run the app
 
 ```bash
+# set up database
+# Local Dev
+psql postgres -U postgres
+\c helios
+# execute create_initial_schema.sql script
+
 # on the root directory
 export FLASK_ENV=development
 flask run
