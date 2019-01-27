@@ -69,3 +69,11 @@ psql postgres -U postgres
 export FLASK_ENV=development
 flask run
 ```
+
+### Development
+
+```bash
+# To test postgres database CRUD operations
+cd services/postgres
+python postgres.py
+```
