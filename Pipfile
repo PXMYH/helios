@@ -13,6 +13,7 @@ fastavro = "*"
 pylint = "*"
 pyyaml = "*"
 sqlalchemy = "*"
+psycopg2 = "*"
 
 [dev-packages]
 autopep8 = "*"
