@@ -24,7 +24,7 @@ Requirements:
 
 ```bash
 pipenv --two
-pipeenv lock
+pipenv lock
 ```
 
 ### Setup Cassandra Cluster
