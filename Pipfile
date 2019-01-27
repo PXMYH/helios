@@ -9,9 +9,10 @@ cython = "*"
 cassandra-driver = "*"
 flask = "*"
 backports-weakref = "*"
-connexion = {extras = ["swagger-ui"], version = "*"}
+connexion = {extras = ["swagger-ui"],version = "*"}
 fastavro = "*"
 pylint = "*"
+pyyaml = "*"
 
 [dev-packages]
 

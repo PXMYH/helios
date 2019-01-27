@@ -50,7 +50,7 @@ docker service inspect --pretty cassandra
 ```bash
 # e.g. to run the craiglist bot spider
 cd services/craigslist
-scrapy crawl craigbot -o craigslist_result.csv
+scrapy crawl craigbot_all -o craigslist_result.csv
 ```
 
 [Note]
