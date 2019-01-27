@@ -1,9 +1,10 @@
-openapi: 3.0.0
+swagger: "2.0"
 
 info:
   title: "helios"
-  version: "1.0"
-  license: 
+  description: "This is the swagger file that goes with our server code"
+  version: "1.0.0"
+  license:
     name: MIT
 
 basePath: /v1
@@ -13,77 +14,187 @@ consumes:
 produces:
   - application/json
 
+# Paths supported by the server application
 paths:
-  /room/:
-    post:
-      operationId: api.room.class_instance.post
-      parameters:
-        - in: body
-          name: room
-          required: true
-          schema:
-            $ref: '#/definitions/Room'
-      responses:
-        '201':
-          description: 'Room indexed'
-          schema: 
-            $ref: '#/definitions/Room'
-
+  /people:
     get:
-      operationId: api.room.class_instance.get
+      operationId: "people.read_all"
+      tags:
+        - "People"
+      summary: "The people data structure supported by the server application"
+      description: "Read the list of people"
       responses:
-        '200':
-          description: 'Fetch a list of items'
+        200:
+          description: "Successful read people list operation"
           schema:
-            type: array
+            type: "array"
             items:
-              $ref: '#/definitions/Item'
-    
-    patch:
-      operationId: api.room.class_instance.patch
+              properties:
+                fname:
+                  type: "string"
+                lname:
+                  type: "string"
+                timestamp:
+                  type: "string"
+
+    post:
+      operationId: people.create
+      tags:
+        - "People"
+      summary: Create a person and add it to the people list
+      description: Create a new person in the people list
+      parameters:
+        - name: person
+          in: body
+          description: Person to create
+          required: True
+          schema:
+            type: object
+            properties:
+              fname:
+                type: string
+                description: First name of person to create
+              lname:
+                type: string
+                description: Last name of person to create
       responses:
-        '200': 
-          description: 'Update a room information'
-          parameters:
-          - in: body
-            name: room
-            required: true
-            schema:
-              $ref: '#/definitions/Room'
+        201:
+          description: Successfully created person in list
+
+  /people/{lname}:
+    get:
+      operationId: people.read_one
+      tags:
+        - "People"
+      summary: Read one person from the people list
+      description: Read one person from the people list
+      parameters:
+        - name: lname
+          in: path
+          description: Last name of the person to get from the list
+          type: string
+          required: True
+      responses:
+        200:
+          description: Successfully read person from people list operation
+          schema:
+            properties:
+              fname:
+                type: string
+              lname:
+                type: string
+              timestamp:
+                type: string
+
+    put:
+      operationId: people.update
+      tags:
+        - "People"
+      summary: Update a person in the people list
+      description: Update a person in the people list
+      parameters:
+        - name: lname
+          in: path
+          description: Last name of the person to update in the list
+          type: string
+          required: True
+        - name: person
+          in: body
+          schema:
+            type: object
+            properties:
+              fname:
+                type: string
+              lname:
+                type: string
+      responses:
+        200:
+          description: Successfully updated person in people list
 
     delete:
-      operationId: api.room.class_instance.delete
+      operationId: people.delete
+      tags:
+        - "People"
+      summary: Delete a person from the people list
+      description: Delete a person
+      parameters:
+        - name: lname
+          in: path
+          type: string
+          required: True
       responses:
-        '200':
-          description: 'Delete a room'
-          schema: 
-          $ref: '#/definitions/Room'
+        200:
+          description: Successfully deleted a person from people list
+# paths:
+#   /room/:
+#     post:
+#       operationId: api.room.class_instance.post
+#       parameters:
+#         - in: body
+#           name: room
+#           required: true
+#           schema:
+#             $ref: '#/definitions/Room'
+#       responses:
+#         '201':
+#           description: 'Room indexed'
+#           schema:
+#             $ref: '#/definitions/Room'
 
+#     get:
+#       operationId: api.room.class_instance.get
+#       responses:
+#         '200':
+#           description: 'Fetch a list of items'
+#           schema:
+#             type: array
+#             items:
+#               $ref: '#/definitions/Item'
 
-definitions:
-  Item:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name: { type: string }
-  Room:
-    type: object
-    required:
-      - title
-      - hood
-      - price
-      - area
-      - unit_price
-    properties:
-      id:
-        type: string
-      title:
-        type: string
-      price:
-        type: integer
-      area:
-        type: string
-      unit_price:
-        type: string
+#     patch:
+#       operationId: api.room.class_instance.patch
+#       responses:
+#         '200':
+#           description: 'Update a room information'
+#           parameters:
+#           - in: body
+#             name: room
+#             required: true
+#             schema:
+#               $ref: '#/definitions/Room'
+
+#     delete:
+#       operationId: api.room.class_instance.delete
+#       responses:
+#         '200':
+#           description: 'Delete a room'
+#           schema:
+#           $ref: '#/definitions/Room'
+
+# definitions:
+#   Item:
+#     type: object
+#     properties:
+#       id:
+#         type: integer
+#         format: int64
+#       name: { type: string }
+#   Room:
+#     type: object
+#     required:
+#       - title
+#       - hood
+#       - price
+#       - area
+#       - unit_price
+#     properties:
+#       id:
+#         type: string
+#       title:
+#         type: string
+#       price:
+#         type: integer
+#       area:
+#         type: string
+#       unit_price:
+#         type: string

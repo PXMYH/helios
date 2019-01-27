@@ -4,16 +4,16 @@ from scrapy import Request
 
 class CraigbotAllSpider(scrapy.Spider):
     name = 'craigbot_all'
-    allowed_domains = ['craigslist.ca']
+    allowed_domains = ['craigslist.org']
     # TODO: accept search URL from command line
     # tweak start_urls to get to the result faster
-    # start_urls = ['https://vancouver.craigslist.ca/search/apa']
-    start_urls = ['https://vancouver.craigslist.ca/search/van/apa?min_bedrooms=2&max_bedrooms=2']
+    # start_urls = ['https://vancouver.craigslist.org/search/apa']
+    start_urls = ['https://vancouver.craigslist.org/search/van/apa?min_bedrooms=2&max_bedrooms=2']
 
     def parse(self, response):
-        print ("parsing the response {0}".format(response.body))
+        print ("[HELIOS] Response: {0}\n".format(response.body))
         listings = response.xpath('//p[@class="result-info"]')
-        print ("\n*************\nlistings: {0}".format(listings))
+        print ("[HELIOS] Listings: {0}".format(listings))
         for listing in listings:
             # get relative url and construct absolute url
             # relative_url = listing.xpath('a/@href').extract_first()
@@ -48,5 +48,6 @@ class CraigbotAllSpider(scrapy.Spider):
 
         relative_next_url = response.xpath('//a[@class="button next"]/@href').extract_first()
         absolute_next_url = response.urljoin(relative_next_url)
-        
+        print ("[HELIOS] Relative Next URL: {0}".format(relative_next_url))
+        print ("[HELIOS] Absolute Next URL: {0}".format(absolute_next_url))
         yield Request(absolute_next_url, callback=self.parse)

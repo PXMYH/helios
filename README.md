@@ -6,19 +6,19 @@ This project uses pipenv for package/dependency and virtualenv management, to le
 
 Requirements:
 
-* Cassandra cluster set up
+- Cassandra cluster set up
 
   ```bash
   docker pull cassandra
   docker run --name helios_db -d cassandra:latest
   ```
 
-* Cassandra driver installed
+- Cassandra driver installed
 
   `pipenv install cassandra-driver`
 
   - if you don't want to have Cython-based extensions then disable through flag
-  `pip install cassandra-driver --no-cython`
+    `pip install cassandra-driver --no-cython`
 
 ## Setup workspace
 
@@ -48,6 +48,8 @@ docker service inspect --pretty cassandra
 ### Run the crawler
 
 ```bash
+# e.g. to run the craiglist bot spider
+cd services/craigslist
 scrapy crawl craigbot -o craigslist_result.csv
 ```
 
@@ -59,5 +61,5 @@ Commits are associated with GPG signing key
 ```bash
 # on the root directory
 export FLASK_ENV=development
-flash run
+flask run
 ```
