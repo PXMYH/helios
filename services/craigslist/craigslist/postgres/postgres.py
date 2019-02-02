@@ -42,7 +42,7 @@ class Rental_Database(base):
 
 class Rental(Rental_Database):
     def __init__(self, location, bedroom, bathroom, den, price, updated_at):
-        print "Initializing rental class ..."
+        print ("Initializing rental class ...")
         self.location = location
         self.bedroom = bedroom
         self.bathroom = bathroom
@@ -55,10 +55,15 @@ class Rental(Rental_Database):
     def save_record(self):
         session.add(self.rental_database_record)
         session.commit()
-        print("Record is saved successfully")
+        print ("Record is saved successfully")
+
+    def save_all_records(self, record_list):
+        session.add_all(record_list)
+        session.commit()
+        print ("Saving all records successfully!")
 
     def get_records(self):
-        print("Getting records ...")
+        print ("Getting records ...")
         rental_records = session.query(self.__class__)
         for rental_record in rental_records:
             print(rental_record.location)
@@ -85,7 +90,7 @@ class Rental(Rental_Database):
         session.commit()
 
     def delete_record(self):
-        print("Deleting record ...")
+        print ("Deleting record ...")
         session.delete(self.rental_database_record)
         session.commit()
 
@@ -94,6 +99,10 @@ class Rental(Rental_Database):
 # Create
 rental_instance = Rental("Vancouver", "2", "2", "0", "600000", "1000302")
 rental_instance.save_record()
+
+# bulk create
+rental_instances = [Rental("Vancouver", "2", "2", "0", "600000", "1000302"), Rental(
+    "Vancouver", "2", "2", "0", "600001", "1000303")]
 
 # Read
 rental_instance.get_records()

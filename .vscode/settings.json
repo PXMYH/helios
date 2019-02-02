@@ -1,3 +1,4 @@
 {
-  "python.pythonPath": "/Users/ProjectX/.local/share/virtualenvs/helios-Wf5S_ZnU/bin/python"
+  "python.pythonPath": "/Users/ProjectX/.local/share/virtualenvs/helios-Wf5S_ZnU/bin/python",
+  "python.linting.pylintEnabled": true
 }

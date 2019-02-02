@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from helio.services.postgres import postgres
-from scrapy import Request
-import scrapy
 import sys
+import scrapy
+from scrapy import Request
 from os import path
+from ..postgres import postgres
 
 
 class CraigbotSpider(scrapy.Spider):
@@ -63,7 +63,10 @@ class CraigbotSpider(scrapy.Spider):
         absolute_next_url = response.urljoin(relative_next_url)
         print ("[HELIOS] Relative Next URL: {0}".format(relative_next_url))
         print ("[HELIOS] Absolute Next URL: {0}".format(absolute_next_url))
+        self.save_to_db()
         yield Request(absolute_next_url, callback=self.parse)
 
     def save_to_db(self):
-        pass
+        rental_instance = postgres.Rental(
+            "Vancouver", "2", "2", "0", "600000", "1000302")
+        rental_instance.save_record()
