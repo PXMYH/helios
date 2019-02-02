@@ -95,20 +95,20 @@ class Rental(Rental_Database):
         session.commit()
 
 
-# CRUD operations
-# Create
-rental_instance = Rental("Vancouver", "2", "2", "0", "600000", "1000302")
-rental_instance.save_record()
+# # CRUD operations
+# # Create
+# rental_instance = Rental("Vancouver", "2", "2", "0", "600000", "1000302")
+# rental_instance.save_record()
 
-# bulk create
-rental_instances = [Rental("Vancouver", "2", "2", "0", "600000", "1000302"), Rental(
-    "Vancouver", "2", "2", "0", "600001", "1000303")]
+# # bulk create
+# rental_instances = [Rental("Vancouver", "2", "2", "0", "600000", "1000302"), Rental(
+#     "Vancouver", "2", "2", "0", "600001", "1000303")]
 
-# Read
-rental_instance.get_records()
+# # Read
+# rental_instance.get_records()
 
-# Update
-rental_instance.update_record("location", "Toronto")
+# # Update
+# rental_instance.update_record("location", "Toronto")
 
-# Delete
-rental_instance.delete_record()
+# # Delete
+# rental_instance.delete_record()

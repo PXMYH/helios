@@ -4,6 +4,7 @@ import scrapy
 from scrapy import Request
 from os import path
 from ..postgres import postgres
+import datetime
 
 
 class CraigbotSpider(scrapy.Spider):
@@ -58,15 +59,25 @@ class CraigbotSpider(scrapy.Spider):
 
             yield {'Title': title, 'Hood': neighbourhood, 'Price': price, 'Area': space, 'UnitPrice': unit_price}
 
+            updated_at = datetime.datetime.utcnow()
+
+            if not price:
+                print (
+                    "price is somehow empty, this most likely is an error on Craigslist posting")
+                self.save_to_db(neighbourhood, "2", "2", "0", "0", updated_at)
+            else:
+                self.save_to_db(neighbourhood, "2", "2",
+                                "0", str(price[0]).strip('$').encode('ascii', 'ignore'), updated_at)
+
         relative_next_url = response.xpath(
             '//a[@class="button next"]/@href').extract_first()
         absolute_next_url = response.urljoin(relative_next_url)
         print ("[HELIOS] Relative Next URL: {0}".format(relative_next_url))
         print ("[HELIOS] Absolute Next URL: {0}".format(absolute_next_url))
-        self.save_to_db()
+
         yield Request(absolute_next_url, callback=self.parse)
 
-    def save_to_db(self):
+    def save_to_db(self, location, bedroom, bathroom, den, price, updated_at):
         rental_instance = postgres.Rental(
-            "Vancouver", "2", "2", "0", "600000", "1000302")
+            location, bedroom, bathroom, den, price, updated_at)
         rental_instance.save_record()
