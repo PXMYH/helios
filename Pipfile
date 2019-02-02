@@ -14,6 +14,7 @@ pylint = "*"
 pyyaml = "*"
 sqlalchemy = "*"
 psycopg2 = "*"
+twisted = "*"
 
 [dev-packages]
 autopep8 = "*"

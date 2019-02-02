@@ -65,9 +65,23 @@ class CraigbotSpider(scrapy.Spider):
                 print (
                     "price is somehow empty, this most likely is an error on Craigslist posting")
                 self.save_to_db(neighbourhood, "2", "2", "0", "0", updated_at)
+                self.rental_list.append({
+                    'location': neighbourhood,
+                    'bedroom': '2',
+                    'bathroom': '2',
+                    'den': '0',
+                    'price': 'nil'
+                })
             else:
                 self.save_to_db(neighbourhood, "2", "2",
                                 "0", str(price[0]).strip('$').encode('ascii', 'ignore'), updated_at)
+                self.rental_list.append({
+                    'location': neighbourhood,
+                    'bedroom': '2',
+                    'bathroom': '2',
+                    'den': '0',
+                    'price': str(price[0]).strip('$').encode('ascii', 'ignore')
+                })
 
         relative_next_url = response.xpath(
             '//a[@class="button next"]/@href').extract_first()

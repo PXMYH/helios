@@ -1,13 +1,5 @@
 #!/usr/bin/env python
 
-# from twisted.internet import reactor
-# from scrapy.crawler import Crawler
-# from scrapy.settings import Settings
-# from scrapy import signals
-# from testspiders.spiders.followall import FollowAllSpider
-# from scrapy.xlib.pydispatch import dispatcher
-# from craigslist import CraigbotSpider
-
 import logging
 import json
 from flask import Flask
@@ -16,7 +8,7 @@ from craigslist.craigslist.spiders.craigbot import CraigbotSpider
 
 app = Flask('Scrape With Flask')
 crawl_runner = CrawlerRunner()      # requires the Twisted reactor to run
-link_list = []                    # store links to be scraped
+rental_list = []                    # store links to be scraped
 scrape_in_progress = False
 scrape_complete = False
 
@@ -31,9 +23,9 @@ def crawl_for_listings():
 
     if not scrape_in_progress:
         scrape_in_progress = True
-        global link_list
+        global rental_list
         # start the crawler and execute a callback when complete
-        eventual = crawl_runner.crawl(CraigbotSpider, link_list=link_list)
+        eventual = crawl_runner.crawl(CraigbotSpider, rental_list=rental_list)
         eventual.addCallback(finished_scrape)
         return 'SCRAPING'
     elif scrape_complete:
@@ -48,7 +40,7 @@ def get_results():
     """
     global scrape_complete
     if scrape_complete:
-        return json.dumps(link_list)
+        return json.dumps(rental_list)
     return 'Scrape Still Progress'
 
 
@@ -59,19 +51,6 @@ def finished_scrape(null):
     """
     global scrape_complete
     scrape_complete = True
-# def stop_reactor():
-#     reactor.stop()
-# def main():
-#     print ("Eagle Eye System Initiated ...")
-#     dispatcher.connect(stop_reactor, signal=signals.spider_closed)
-#     spider = FollowAllSpider(CraigbotSpider)
-#     crawler = Crawler(Settings())
-#     crawler.configure()
-#     crawler.crawl(spider)
-#     crawler.start()
-#     logging.info('Running reactor...')
-#     reactor.run()  # the script will block here until the spider is closed
-#     logging.info('Reactor stopped.')
 
 
 if __name__ == '__main__':
@@ -90,4 +69,5 @@ if __name__ == '__main__':
     http_server.listen(factory)
 
     # start event loop
+    logging.debug("initiating helios system ...")
     reactor.run()
