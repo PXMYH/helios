@@ -15,6 +15,7 @@ pyyaml = "*"
 sqlalchemy = "*"
 psycopg2 = "*"
 twisted = "*"
+flask-apscheduler = "*"
 
 [dev-packages]
 autopep8 = "*"

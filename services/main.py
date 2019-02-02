@@ -5,12 +5,43 @@ import json
 from flask import Flask
 from scrapy.crawler import CrawlerRunner
 from craigslist.craigslist.spiders.craigbot import CraigbotSpider
+from flask_apscheduler import APScheduler
 
-app = Flask('Scrape With Flask')
+
+class Config(object):
+    JOBS = [
+        {
+            'id': 'job1',
+            'func': 'main:crawl_for_listings',
+            'trigger': 'interval',
+            'seconds': 60
+        }
+    ]
+
+    SCHEDULER_EXECUTORS = {
+        'default': {'type': 'threadpool', 'max_workers': 20}
+    }
+
+    SCHEDULER_JOB_DEFAULTS = {
+        'coalesce': False,
+        'max_instances': 3
+    }
+
+    SCHEDULER_API_ENABLED = True
+
+
+app = Flask('Scrapy With Flask')
+app.config.from_object(Config())
+
 crawl_runner = CrawlerRunner()      # requires the Twisted reactor to run
 rental_list = []                    # store links to be scraped
 scrape_in_progress = False
 scrape_complete = False
+
+
+@app.route('/')
+def welcome():
+    return "Welcome to Helios System!", 200
 
 
 @app.route('/crawl')
@@ -67,6 +98,10 @@ if __name__ == '__main__':
     factory = server.Site(root_resource)
     http_server = endpoints.TCP4ServerEndpoint(reactor, 9999)
     http_server.listen(factory)
+
+    scheduler = APScheduler()
+    scheduler.init_app(app)
+    scheduler.start()
 
     # start event loop
     logging.debug("initiating helios system ...")
