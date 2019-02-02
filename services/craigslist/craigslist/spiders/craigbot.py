@@ -3,7 +3,7 @@ import sys
 import scrapy
 from scrapy import Request
 from os import path
-from ..postgres import postgres
+from postgres.postgres import Rental
 import datetime
 
 
@@ -92,6 +92,6 @@ class CraigbotSpider(scrapy.Spider):
         yield Request(absolute_next_url, callback=self.parse)
 
     def save_to_db(self, location, bedroom, bathroom, den, price, updated_at):
-        rental_instance = postgres.Rental(
+        rental_instance = Rental(
             location, bedroom, bathroom, den, price, updated_at)
         rental_instance.save_record()

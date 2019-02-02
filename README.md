@@ -6,25 +6,13 @@ This project uses pipenv for package/dependency and virtualenv management, to le
 
 Requirements:
 
-- Cassandra cluster set up
-
-  ```bash
-  docker pull cassandra
-  docker run --name helios_db -d cassandra:latest
-  ```
-
-- Cassandra driver installed
-
-  `pipenv install cassandra-driver`
-
-  - if you don't want to have Cython-based extensions then disable through flag
-    `pip install cassandra-driver --no-cython`
-
 ## Setup workspace
 
 ```bash
+brew install pipenv
 pipenv --two
 pipenv lock
+pipenv install
 ```
 
 ### Setup Cassandra Cluster
@@ -45,18 +33,24 @@ docker service ps cassandra
 docker service inspect --pretty cassandra
 ```
 
-### Run the crawler
+### Run the app
 
 ```bash
-# e.g. to run the craiglist bot spider
+# run craiglist bot spider only
 cd services/craigslist
 scrapy crawl craigbot_all -o craigslist_result.csv
+
+# run scheduled bot spider
+cd services
+python main.py
+
+# run app
+# on root directory
+export FLASK_ENV=development
+flask run
 ```
 
-[Note]
-Commits are associated with GPG signing key
-
-### Run the app
+### Development
 
 ```bash
 # set up database
@@ -65,15 +59,10 @@ psql postgres -U postgres
 \c helios
 # execute create_initial_schema.sql script
 
-# on the root directory
-export FLASK_ENV=development
-flask run
-```
-
-### Development
-
-```bash
 # To test postgres database CRUD operations
 cd services/postgres
 python postgres.py
 ```
+
+_Note_
+Commits are associated with GPG signing key
