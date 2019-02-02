@@ -5,7 +5,7 @@ import json
 from flask import Flask
 from scrapy.crawler import CrawlerRunner
 from craigslist.craigslist.spiders.craigbot import CraigbotSpider
-from flask_apscheduler import APScheduler
+# from flask_apscheduler import APScheduler
 
 
 class Config(object):
@@ -31,7 +31,7 @@ class Config(object):
 
 
 app = Flask('Scrapy With Flask')
-app.config.from_object(Config())
+# app.config.from_object(Config())
 
 crawl_runner = CrawlerRunner()      # requires the Twisted reactor to run
 rental_list = []                    # store links to be scraped
@@ -89,6 +89,8 @@ if __name__ == '__main__':
     from twisted.logger import globalLogBeginner, textFileLogObserver
     from twisted.web import server, wsgi
     from twisted.internet import endpoints, reactor
+    from apscheduler.schedulers.twisted import TwistedScheduler
+    import os
 
     # start the logger
     globalLogBeginner.beginLoggingTo([textFileLogObserver(stdout)])
@@ -99,10 +101,18 @@ if __name__ == '__main__':
     http_server = endpoints.TCP4ServerEndpoint(reactor, 9999)
     http_server.listen(factory)
 
-    scheduler = APScheduler()
-    scheduler.init_app(app)
+    # scheduler = APScheduler()
+    # scheduler.init_app(app)
+    # scheduler.start()
+    scheduler = TwistedScheduler()
+    scheduler.add_job(crawl_for_listings, 'interval', seconds=60)
     scheduler.start()
+    print (
+        'Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
 
     # start event loop
-    logging.debug("initiating helios system ...")
-    reactor.run()
+    try:
+        logging.debug("initiating helios system ...")
+        reactor.run()
+    except (KeyboardInterrupt, SystemExit):
+        pass
