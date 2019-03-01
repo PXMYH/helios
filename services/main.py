@@ -5,6 +5,7 @@ import json
 from flask import Flask
 from scrapy.crawler import CrawlerRunner
 from craigslist.craigslist.spiders.craigbot import CraigbotSpider
+from twisted.internet import reactor
 # from flask_apscheduler import APScheduler
 
 
@@ -84,6 +85,21 @@ def finished_scrape(null):
     scrape_complete = True
 
 
+# @app.route('/run')
+def run_crawl():
+    """
+    Run a spider within Twisted. Once it completes,
+    wait 10 seconds and run another spider.
+    """
+    runner = CrawlerRunner({
+        'USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36',
+    })
+    deferred = runner.crawl(CraigbotSpider)
+    # you can use reactor.callLater or task.deferLater to schedule a function
+    deferred.addCallback(reactor.callLater, 5, run_crawl)
+    return deferred
+
+
 if __name__ == '__main__':
     from sys import stdout
     from twisted.logger import globalLogBeginner, textFileLogObserver
@@ -93,26 +109,32 @@ if __name__ == '__main__':
     import os
 
     # start the logger
-    globalLogBeginner.beginLoggingTo([textFileLogObserver(stdout)])
+    # globalLogBeginner.beginLoggingTo([textFileLogObserver(stdout)])
 
     # start the WSGI server
-    root_resource = wsgi.WSGIResource(reactor, reactor.getThreadPool(), app)
-    factory = server.Site(root_resource)
-    http_server = endpoints.TCP4ServerEndpoint(reactor, 9999)
-    http_server.listen(factory)
+    # root_resource = wsgi.WSGIResource(reactor, reactor.getThreadPool(), app)
+    # factory = server.Site(root_resource)
+    # http_server = endpoints.TCP4ServerEndpoint(reactor, 9999)
+    # http_server.listen(factory)
 
+    # method #1
     # scheduler = APScheduler()
     # scheduler.init_app(app)
     # scheduler.start()
-    scheduler = TwistedScheduler()
-    scheduler.add_job(crawl_for_listings, 'interval', seconds=60)
-    scheduler.start()
-    print (
-        'Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
 
-    # start event loop
-    try:
-        logging.debug("initiating helios system ...")
-        reactor.run()
-    except (KeyboardInterrupt, SystemExit):
-        pass
+    # method #2, works a little better
+    # scheduler = TwistedScheduler()
+    # scheduler.add_job(crawl_for_listings, 'interval', seconds=60)
+    # scheduler.start()
+    # print (
+    #     'Press Ctrl+{0} to exit'.format('Break' if os.name == 'nt' else 'C'))
+
+    # # start event loop
+    # try:
+    #     logging.debug("initiating helios system ...")
+    #     reactor.run()
+    # except (KeyboardInterrupt, SystemExit):
+    #     pass
+
+    run_crawl()
+    reactor.run()
