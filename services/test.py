@@ -1,10 +1,13 @@
 from scrapy.crawler import CrawlerRunner
 from craigslist.craigslist.spiders.craigbot import CraigbotSpider
 from twisted.internet import reactor
+from twisted.internet import defer
 
 from twisted.internet.task import LoopingCall
 from scrapy.utils.log import configure_logging
 
+
+# @defer.inlineCallbacks
 # def run_crawl():
 #     """
 #     Run a spider within Twisted. Once it completes,
@@ -16,15 +19,16 @@ from scrapy.utils.log import configure_logging
 #     deferred = runner.crawl(CraigbotSpider)
 #     # you can use reactor.callLater or task.deferLater to schedule a function
 #     deferred.addCallback(reactor.callLater, 5, run_crawl)
-#     return deferred
+#     yield deferred
 
 
 # run_crawl()
 # reactor.run()
 
-
+rental_list = []
 configure_logging()
 runner = CrawlerRunner()
-task = LoopingCall(lambda: runner.crawl(CraigbotSpider()))
-task.start(5)
+task = LoopingCall(lambda: runner.crawl(
+    CraigbotSpider(), rental_list=rental_list))
+task.start(1000)
 reactor.run()
