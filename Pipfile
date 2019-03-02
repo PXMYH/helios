@@ -17,6 +17,7 @@ psycopg2 = "*"
 twisted = "*"
 flask-apscheduler = "*"
 celery = "*"
+redis = "*"
 
 [dev-packages]
 autopep8 = "*"
