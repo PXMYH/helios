@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-import sys
-import scrapy
-from scrapy import Request
-from os import path
-from postgres.postgres import Rental
 import datetime
+# from postgres.postgres import Rental
+from services.postgres.postgres import Rental
+from os import path
+from scrapy import Request
+import scrapy
+import sys
+# sys.path.insert(0, "/Users/ProjectX/workspace/helios/services")
 
 
 class CraigbotSpider(scrapy.Spider):

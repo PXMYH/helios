@@ -21,14 +21,19 @@ from scrapy.utils.log import configure_logging
 #     deferred.addCallback(reactor.callLater, 5, run_crawl)
 #     yield deferred
 
-
 # run_crawl()
 # reactor.run()
 
-rental_list = []
-configure_logging()
-runner = CrawlerRunner()
-task = LoopingCall(lambda: runner.crawl(
-    CraigbotSpider(), rental_list=rental_list))
-task.start(1000)
-reactor.run()
+class Bots():
+    """
+    Run various spider bots
+    """
+
+    def run_craigbot(self):
+        rental_list = []
+        configure_logging()
+        runner = CrawlerRunner()
+        task = LoopingCall(lambda: runner.crawl(
+            CraigbotSpider(), rental_list=rental_list))
+        task.start(1000)
+        reactor.run()
