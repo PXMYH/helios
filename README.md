@@ -17,22 +17,20 @@ pipenv lock
 pipenv install
 ```
 
-### Setup Cassandra Cluster
+### Setup app attached resources
 
-for local dev:
+Redis cluster for local dev:
 
 ```bash
-# assume the following command is run from root directory and cluster nodes are within the same VM
-docker swarm init
+brew install redis
+brew services start redis
+```
 
-docker config create cassandra.yaml ./res/cassandra.yaml
-docker service create --replicas 3 --name cassandra_cluster -d cassandra:3.11.3-mh
+Postgres cluster for local dev:
 
-# to check running service
-docker service ps cassandra
-
-# to inspect service
-docker service inspect --pretty cassandra
+```bash
+brew install postgres
+brew services start postgres
 ```
 
 ### Run the app
