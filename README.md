@@ -42,12 +42,12 @@ scrapy crawl craigbot_all -o craigslist_result.csv
 
 # run scheduled bot spider
 cd services
-python main.py
+python bots.py
 
 # run app
 # on root directory
 export FLASK_ENV=development
-flask run
+FLASK_APP=app.py flask run  --debugger
 ```
 
 ### Development
