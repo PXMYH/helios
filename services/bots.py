@@ -35,5 +35,5 @@ class Bots():
         runner = CrawlerRunner()
         task = LoopingCall(lambda: runner.crawl(
             CraigbotSpider(), rental_list=rental_list))
-        task.start(1000)
+        task.start(60*10)
         reactor.run()
