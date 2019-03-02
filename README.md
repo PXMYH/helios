@@ -1,5 +1,7 @@
 # helios
 
+[![Build Status](https://travis-ci.org/PXMYH/helios.svg?branch=master)](https://travis-ci.org/PXMYH/helios)
+
 Scrapy spider to crawl and fetch information about real estate information
 
 This project uses pipenv for package/dependency and virtualenv management, to learn more about how to use [pipenv](https://pipenv.readthedocs.io/en/latest/)
@@ -48,6 +50,9 @@ python bots.py
 # on root directory
 export FLASK_ENV=development
 FLASK_APP=app.py flask run  --debugger
+
+# run app with bot initiated at start up
+python app.py
 ```
 
 ### Development
