@@ -16,6 +16,7 @@ sqlalchemy = "*"
 psycopg2 = "*"
 twisted = "*"
 flask-apscheduler = "*"
+celery = "*"
 
 [dev-packages]
 autopep8 = "*"

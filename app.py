@@ -3,6 +3,7 @@ from flask import Flask, render_template
 from flask import jsonify
 import connexion
 from services.bots import Bots
+from celery import Celery
 
 # Create application instance
 # app = connexion.FlaskApp(__name__, specification_dir="swagger/")
@@ -11,14 +12,20 @@ from services.bots import Bots
 # app.add_api('api.yaml')
 
 app = Flask(__name__)
+app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
+app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
+
+celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
+celery.conf.update(app.config)
 
 
 @app.route("/")
-def home():
-    return render_template("home.html")
+def index():
+    return jsonify("Welcome to Helios System")
 
 
-@app.route("/crawl")
+@celery.task
+@app.route("/v1/start")
 def reap():
     """ 
     start bot crawling sequence 
