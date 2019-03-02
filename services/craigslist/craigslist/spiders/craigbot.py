@@ -39,7 +39,7 @@ class CraigbotSpider(scrapy.Spider):
 
             # processing neighbourhood info
             if neighbourhood:
-                neighbourhood = str(neighbourhood[0]).replace(
+                neighbourhood = u''.join((neighbourhood[0])).encode('utf-8').replace(
                     '(', '').replace(')', '').strip()
             else:
                 neighbourhood = "UNKNOWN"
