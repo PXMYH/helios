@@ -18,6 +18,7 @@ twisted = "*"
 flask-apscheduler = "*"
 celery = "*"
 redis = "*"
+gunicorn = "*"
 
 [dev-packages]
 autopep8 = "*"
