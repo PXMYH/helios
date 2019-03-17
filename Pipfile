@@ -13,12 +13,12 @@ fastavro = "*"
 pylint = "*"
 pyyaml = "*"
 sqlalchemy = "*"
-psycopg2 = "*"
 twisted = "*"
 flask-apscheduler = "*"
 celery = "*"
 redis = "*"
 gunicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 autopep8 = "*"

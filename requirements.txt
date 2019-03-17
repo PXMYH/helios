@@ -20,19 +20,19 @@ constantly==15.1.0
 cryptography==2.6.1
 cssselect==1.0.3
 cython==0.29.6
-enum34==1.1.6 ; python_version < '3'
+enum34==1.1.6 ; python_version < '3.4'
 fastavro==0.21.19
 flask-apscheduler==1.11.0
 flask==1.0.2
 funcsigs==1.0.2 ; python_version == '2.7'
-functools32==3.2.3.post2 ; python_version == '2.7'
+functools32==3.2.3.post2 ; python_version < '3.0'
 futures==3.2.0 ; python_version < '3.2'
 gunicorn==19.9.0
 hyperlink==18.0.0
 idna==2.8
 incremental==17.5.0
 inflection==0.3.1
-ipaddress==1.0.22 ; python_version < '3'
+ipaddress==1.0.22 ; python_version < '3.3'
 isort==4.3.15
 itsdangerous==1.1.0
 jinja2==2.10
@@ -44,8 +44,8 @@ markupsafe==1.1.1
 mccabe==0.6.1
 openapi-spec-validator==0.2.6
 parsel==1.5.1
-pathlib==1.0.1 ; python_version < '3.4'
-psycopg2==2.7.7
+pathlib==1.0.1 ; python_version == '2.7'
+psycopg2-binary==2.7.7
 pyasn1-modules==0.2.4
 pyasn1==0.4.5
 pycparser==2.19
