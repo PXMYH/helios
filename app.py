@@ -33,11 +33,14 @@ def make_celery(app):
 
 
 app = Flask(__name__)
+# TODO: add configuration management
 app.config.update(
     CELERY_BROKER_URL='redis://localhost:6379',
     CELERY_RESULT_BACKEND='redis://localhost:6379'
 )
-
+# app.config.from_object('yourapplication.default_settings')
+# app.config.from_envvar('YOURAPPLICATION_SETTINGS')
+# app.config.from_object('configmodule.DevelopmentConfig')
 celery = make_celery(app)
 
 

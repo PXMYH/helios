@@ -8,7 +8,9 @@ This project uses pipenv for package/dependency and virtualenv management, to le
 
 Requirements:
 
-## Setup workspace
+## Setup
+
+### workspace
 
 ```bash
 brew install pipenv
@@ -17,53 +19,73 @@ pipenv lock
 pipenv install
 ```
 
-### Setup app attached resources
+### Setup attached resources
 
-Redis cluster for local dev:
+Redis cluster for local dev (Celery):
 
 ```bash
 brew install redis
 brew services start redis
 ```
 
-Postgres cluster for local dev:
+Postgres cluster for local dev (Backend database):
 
 ```bash
 brew install postgres
 brew services start postgres
 ```
 
-### Run the app
+## Run app
+
+run the following command from root directory
+
+### run craiglist bot spider only
 
 ```bash
-# run craiglist bot spider only
 cd services/craigslist
 scrapy crawl craigbot_all -o craigslist_result.csv
-
-# run scheduled bot spider
-cd services
-python bots.py
-
-# run app
-# on root directory
-export FLASK_ENV=development
-FLASK_APP=app.py flask run  --debugger
-
-# run app with bot initiated at start up
-python app.py
 ```
 
-### Development
+### run scheduled bot spider
 
 ```bash
-# set up database
-# Local Dev
+cd services
+export POSTGRES_DB_URI="postgres://postgres@localhost:5432/helios"; python bots.py
+```
+
+### run app with bot manual trigger
+
+```bash
+export FLASK_ENV=development
+export POSTGRES_DB_URI="postgres://postgres@localhost:5432/helios"
+FLASK_APP=app.py flask run --debugger
+# to trigger the bot, run
+curl http://localhost:5000
+```
+
+### run app with bot autostart
+
+```bash
+export POSTGRES_DB_URI="postgres://postgres@localhost:5432/helios"
+python app.py
+
+```
+
+## Development
+
+### Database
+
+#### local development
+
+```bash
+# connect to database
 psql postgres -U postgres
 \c helios
 # execute create_initial_schema.sql script
 
 # To test postgres database CRUD operations
 cd services/postgres
+export POSTGRES_DB_URI="postgres://postgres@localhost:5432/helios"
 python postgres.py
 ```
 
