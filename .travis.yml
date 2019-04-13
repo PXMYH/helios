@@ -9,17 +9,10 @@ python: 2.7
 
 # Install the codecov pip dependency
 install:
-  - pip install codecov
+  - pip install -r requirements.txt
 
 services:
   - docker
 
 before_install:
   - docker build -t coeus77/helios .
-# Run the unit test
-# script:
-#   - coverage run tests.py
-
-# Push the results back to codecov
-after_success:
-  - codecov
