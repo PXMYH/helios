@@ -21,7 +21,7 @@ session = Session()
 
 class Rental_Database(base):
 
-    __tablename__ = 'test_table'
+    __tablename__ = 'craigslist'
 
     id = Column(BigInteger, primary_key=True)
     location = Column(String(255))

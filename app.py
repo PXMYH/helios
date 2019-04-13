@@ -7,6 +7,7 @@ from celery import Celery
 import requests
 import time
 import threading
+import os
 
 # Create application instance
 # app = connexion.FlaskApp(__name__, specification_dir="swagger/")
@@ -96,5 +97,6 @@ if __name__ == '__main__':
     # app.add_api('api.yaml', resolver=RestyResolver('api'))
     # app.add_api('api.yml')
     print('Starting runner')
+    port = int(os.environ.get('PORT', 5000))
     start_runner()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
