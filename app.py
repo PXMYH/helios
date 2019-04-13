@@ -33,7 +33,7 @@ def make_celery(app):
     return celery
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 # TODO: add configuration management
 app.config.update(
     CELERY_BROKER_URL='redis://localhost:6379',
@@ -47,7 +47,8 @@ celery = make_celery(app)
 
 @app.route("/")
 def index():
-    return jsonify("Welcome to Helios System")
+    return render_template("index.html")
+    # return jsonify("Welcome to Helios System")
 
 
 @celery.task()
@@ -103,4 +104,4 @@ if __name__ == '__main__':
     print('Starting runner')
     port = int(os.environ.get('PORT', 5000))
     start_runner(port)
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(host='0.0.0.0', port=port, debug=True)
