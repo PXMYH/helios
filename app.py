@@ -70,13 +70,14 @@ def activate_reap():
     thread.start()
 
 
-def start_runner():
-    def start_loop():
+def start_runner(running_port):
+    def start_loop(running_port):
         not_started = True
         while not_started:
             print('In start loop')
             try:
-                r = requests.get('http://localhost:5000/')
+                print("checking app running at port {}".format(running_port))
+                r = requests.get('http://0.0.0.0:' + running_port + "/")
                 if r.status_code == 200:
                     print('Server started, quiting start_loop')
                     not_started = False
@@ -86,7 +87,7 @@ def start_runner():
             time.sleep(2)
 
     print('Started runner')
-    thread = threading.Thread(target=start_loop)
+    thread = threading.Thread(target=start_loop, args=(running_port,))
     thread.start()
 
 
@@ -98,5 +99,5 @@ if __name__ == '__main__':
     # app.add_api('api.yml')
     print('Starting runner')
     port = int(os.environ.get('PORT', 5000))
-    start_runner()
-    app.run(host='0.0.0.0', port=port, debug=True)
+    start_runner(port)
+    app.run(host='0.0.0.0', port=port, debug=False)
