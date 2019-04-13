@@ -9,6 +9,7 @@ from sqlalchemy.orm import sessionmaker
 
 # db_info = "postgres://postgres@localhost:5432/helios"
 DATABASE_URI = os.getenv('POSTGRES_DB_URI')
+# DATABASE_PASSWORD = os.getenv('POSTGRES_DB_PASSWORD')
 db_info = DATABASE_URI
 print("postgres database uri: "+str(db_info))
 db = create_engine(db_info)

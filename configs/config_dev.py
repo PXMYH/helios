@@ -6,7 +6,7 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    DATABASE_URI = 'mysql://user@localhost/foo'
+    DATABASE_URI = 'mysql://kyzysdphaqlzbb@ec2-54-221-201-212.compute-1.amazonaws.com/dfuqci9rqsdtb9'
 
 
 class DevelopmentConfig(Config):
