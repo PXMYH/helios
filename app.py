@@ -76,17 +76,20 @@ def start_runner(running_port):
         while not_started:
             print('In start loop')
             try:
-                print("checking app running at port {}".format(running_port))
-                r = requests.get('http://0.0.0.0:' + running_port + "/")
+                print ("checking app running at port {}".format(running_port))
+                running_url = "http://0.0.0.0:" + str(running_port) + "/"
+                print ("request sent to {}".format(str(running_url)))
+                r = requests.get(str(running_url))
+                print("status code is {}".format(str(r.status_code)))
                 if r.status_code == 200:
                     print('Server started, quiting start_loop')
                     not_started = False
-                print(r.status_code)
-            except:
-                print('Server not yet started')
+            except Exception as e:
+                print ("Server not yet started, exception: {}".format(str(e)))
             time.sleep(2)
 
     print('Started runner')
+    # need ',' at the end of args to pass as tuple
     thread = threading.Thread(target=start_loop, args=(running_port,))
     thread.start()
 
