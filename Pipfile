@@ -19,6 +19,7 @@ celery = "*"
 redis = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
+pytest = "*"
 
 [dev-packages]
 autopep8 = "*"
