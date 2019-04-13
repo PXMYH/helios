@@ -18,17 +18,48 @@
     <meta name="author" content="Grayrids" />
     <title>Slick - Bootstrap 4 Template</title>
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="img/2.png" type="image/png" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for ('static', filename='img/2.png') }}"
+      type="image/png"
+    />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-    <link rel="stylesheet" href="css/LineIcons.css" />
-    <link rel="stylesheet" href="css/owl.carousel.css" />
-    <link rel="stylesheet" href="css/owl.theme.css" />
-    <link rel="stylesheet" href="css/magnific-popup.css" />
-    <link rel="stylesheet" href="css/nivo-lightbox.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/animate.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/LineIcons.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/owl.carousel.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/owl.theme.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/magnific-popup.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/nivo-lightbox.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for ('static', filename='css/responsive.css') }}"
+    />
   </head>
 
   <body>
@@ -43,7 +74,7 @@
       >
         <div class="container">
           <a href="index.html" class="navbar-brand"
-            ><img src="img/logo.png" alt=""
+            ><img src="{{ url_for ('static', filename='img/logo.png') }}" alt=""
           /></a>
           <button
             class="navbar-toggler"
@@ -110,7 +141,10 @@
           </div>
           <div class="col-lg-6 col-md-12 col-xs-12 p-0">
             <div class="intro-img">
-              <img src="img/intro.png" alt="" />
+              <img
+                src="{{ url_for ('static', filename='img/intro.png') }}"
+                alt=""
+              />
             </div>
           </div>
         </div>
@@ -177,7 +211,7 @@
           <div class="col-lg-6 col-md-12 pl-0 pt-70 pr-5">
             <div class="business-item-img">
               <img
-                src="img/business/business-img.png"
+                src="{{ url_for ('static', filename='img/business/business-img.png') }}"
                 class="img-fluid"
                 alt=""
               />
@@ -384,7 +418,11 @@
             <div class="showcase-slider owl-carousel">
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/01.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/01.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -405,7 +443,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/02.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/02.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -426,7 +468,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/03.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/03.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -447,7 +493,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/04.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/04.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -468,7 +518,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/05.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/05.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -489,7 +543,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/01.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/01.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -510,7 +568,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/02.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/02.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -531,7 +593,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/03.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/03.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -552,7 +618,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/04.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/04.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -573,7 +643,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/05.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/05.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -594,7 +668,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/01.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/01.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -615,7 +693,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/02.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/02.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -636,7 +718,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/03.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/03.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -657,7 +743,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/04.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/04.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -678,7 +768,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/05.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/05.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -699,7 +793,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/01.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/01.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -720,7 +818,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/02.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/02.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -741,7 +843,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/03.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/03.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -762,7 +868,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/04.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/04.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -783,7 +893,11 @@
               </div>
               <div class="item">
                 <div class="screenshot-thumb">
-                  <img src="img/showcase/05.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/showcase/05.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                   <div class="hover-content text-center">
                     <div class="fancy-table">
                       <div class="table-cell">
@@ -944,7 +1058,10 @@
                     </div>
                   </div>
                   <div class="client-thumb">
-                    <img src="img/testimonial/01.png" alt="" />
+                    <img
+                      src="{{ url_for ('static', filename='img/testimonial/01.png') }}"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -965,7 +1082,10 @@
                     </div>
                   </div>
                   <div class="client-thumb">
-                    <img src="img/testimonial/01.png" alt="" />
+                    <img
+                      src="{{ url_for ('static', filename='img/testimonial/01.png') }}"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -986,7 +1106,10 @@
                     </div>
                   </div>
                   <div class="client-thumb">
-                    <img src="img/testimonial/01.png" alt="" />
+                    <img
+                      src="{{ url_for ('static', filename='img/testimonial/01.png') }}"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -1007,7 +1130,10 @@
                     </div>
                   </div>
                   <div class="client-thumb">
-                    <img src="img/testimonial/01.png" alt="" />
+                    <img
+                      src="{{ url_for ('static', filename='img/testimonial/01.png') }}"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -1028,7 +1154,10 @@
                     </div>
                   </div>
                   <div class="client-thumb">
-                    <img src="img/testimonial/01.png" alt="" />
+                    <img
+                      src="{{ url_for ('static', filename='img/testimonial/01.png') }}"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -1049,7 +1178,10 @@
                     </div>
                   </div>
                   <div class="client-thumb">
-                    <img src="img/testimonial/01.png" alt="" />
+                    <img
+                      src="{{ url_for ('static', filename='img/testimonial/01.png') }}"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -1088,7 +1220,11 @@
           <div class="col-lg-3 col-md-6 col-xs-12">
             <div class="single-team">
               <div class="team-thumb">
-                <img src="img/team/01.jpg" class="img-fluid" alt="" />
+                <img
+                  src="{{ url_for ('static', filename='img/team/01.jpg') }}"
+                  class="img-fluid"
+                  alt=""
+                />
               </div>
 
               <div class="team-details">
@@ -1118,7 +1254,11 @@
           <div class="col-lg-3 col-md-6 col-xs-12">
             <div class="single-team">
               <div class="team-thumb">
-                <img src="img/team/02.jpg" class="img-fluid" alt="" />
+                <img
+                  src="{{ url_for ('static', filename='img/team/02.jpg') }}"
+                  class="img-fluid"
+                  alt=""
+                />
               </div>
 
               <div class="team-details">
@@ -1148,7 +1288,11 @@
           <div class="col-lg-3 col-md-6 col-xs-12">
             <div class="single-team">
               <div class="team-thumb">
-                <img src="img/team/03.jpg" class="img-fluid" alt="" />
+                <img
+                  src="{{ url_for ('static', filename='img/team/03.jpg') }}"
+                  class="img-fluid"
+                  alt=""
+                />
               </div>
 
               <div class="team-details">
@@ -1178,7 +1322,11 @@
           <div class="col-lg-3 col-md-6 col-xs-12">
             <div class="single-team">
               <div class="team-thumb">
-                <img src="img/team/04.jpg" class="img-fluid" alt="" />
+                <img
+                  src="{{ url_for ('static', filename='img/team/04.jpg') }}"
+                  class="img-fluid"
+                  alt=""
+                />
               </div>
 
               <div class="team-details">
@@ -1239,7 +1387,11 @@
             <div class="blog-item-wrapper">
               <div class="blog-item-img">
                 <a href="single-post.html">
-                  <img src="img/blog/01.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/blog/01.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                 </a>
               </div>
               <div class="blog-item-text">
@@ -1273,7 +1425,11 @@
             <div class="blog-item-wrapper">
               <div class="blog-item-img">
                 <a href="single-post.html">
-                  <img src="img/blog/02.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/blog/02.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                 </a>
               </div>
               <div class="blog-item-text">
@@ -1307,7 +1463,11 @@
             <div class="blog-item-wrapper">
               <div class="blog-item-img">
                 <a href="single-post.html">
-                  <img src="img/blog/03.jpg" class="img-fluid" alt="" />
+                  <img
+                    src="{{ url_for ('static', filename='img/blog/03.jpg') }}"
+                    class="img-fluid"
+                    alt=""
+                  />
                 </a>
               </div>
               <div class="blog-item-text">
@@ -1456,7 +1616,11 @@
           <!-- Start Col -->
           <div class="col-lg-4 col-md-12">
             <div class="contact-img">
-              <img src="img/contact/01.png" class="img-fluid" alt="" />
+              <img
+                src="{{ url_for ('static', filename='img/contact/01.png') }}"
+                class="img-fluid"
+                alt=""
+              />
             </div>
           </div>
           <!-- End Col -->
@@ -1479,7 +1643,10 @@
             <!-- Start Col -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
               <div class="footer-logo">
-                <img src="img/footer-logo.png" alt="" />
+                <img
+                  src="{{ url_for ('static', filename='img/footer-logo.png') }}"
+                  alt=""
+                />
               </div>
             </div>
             <!-- End Col -->
@@ -1563,15 +1730,15 @@
     <!-- End Preloader -->
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="js/jquery-min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.js"></script>
-    <script src="js/jquery.nav.js"></script>
-    <script src="js/scrolling-nav.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/nivo-lightbox.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ url_for ('static', filename='js/jquery-min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/owl.carousel.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/jquery.nav.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/scrolling-nav.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/nivo-lightbox.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for ('static', filename='js/main.js') }}"></script>
   </body>
 </html>
