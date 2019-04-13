@@ -1,6 +1,13 @@
 from services.bots import Bots
+import pytest
 
-print ("Initiating Bot Sequence ...")
 
-test_bot = Bots()
-test_bot.run_craigbot()
+@pytest.fixture()
+def init():
+    print ("Initiating Bot Sequence ...")
+
+
+@pytest.mark.skip(reason="skip due to functional testing")
+def test_craigbot():
+    test_bot = Bots()
+    test_bot.run_craigbot()

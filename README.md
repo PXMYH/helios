@@ -89,5 +89,23 @@ export POSTGRES_DB_URI="postgres://postgres@localhost:5432/helios"
 python postgres.py
 ```
 
+## Deployment
+
+helios system is set up to be in continous deployment to Heroku platform at https://dashboard.heroku.com/apps/beast-helios tracking `master` branch
+
+```bash
+# deploy to Heroku, just check in/ merge into master branch
+
+# restart app
+heroku restart
+
+# set/unset environment variables
+heroku config:set <env_var>
+heroku config:unset <env_var>
+
+# check logs
+heroku logs --tail
+```
+
 _Note_
 Commits are associated with GPG signing key
