@@ -1,4 +1,4 @@
-from services.bots import Bots
+# from services.bots import Bots
 import pytest
 
 
@@ -9,5 +9,6 @@ def init():
 
 @pytest.mark.skip(reason="skip due to functional testing")
 def test_craigbot():
-    test_bot = Bots()
-    test_bot.run_craigbot()
+    # test_bot = Bots()
+    # test_bot.run_craigbot()
+    pass
