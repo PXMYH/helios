@@ -4,23 +4,33 @@ sudo: false
 # Set the build language to Python
 language: python
 
+# enable cache
+cache: pip
+
 # Set the python version to 2.7
 python: 2.7
 
 # Install the codecov pip dependency
 install:
   - pip install -r requirements.txt
-  - pip install codecov
+  - pip install pytest pytest-cov codecov
 
 script:
-  - coverage run test_service.py
+  - pytest --cov=./
 
 services:
   - docker
 
 before_install:
-  - docker build -t coeus77/helios .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 # Push the results back to codecov
 after_success:
+  - export DOCKER_REPO=coeus77/helios
+  - export COMMIT=${TRAVIS_COMMIT::8}
+  - docker build -t $DOCKER_REPO:$COMMIT .
+  - docker tag $DOCKER_REPO:$COMMIT $DOCKER_REPO:latest
+  - docker tag $DOCKER_REPO:$COMMIT $DOCKER_REPO:$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_REPO:latest
+  - docker push $DOCKER_REPO:$TRAVIS_BUILD_NUMBER
   - codecov
