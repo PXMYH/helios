@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/PXMYH/helios.svg?branch=master)](https://travis-ci.org/PXMYH/helios)
 [![codecov](https://codecov.io/gh/PXMYH/helios/branch/master/graph/badge.svg)](https://codecov.io/gh/PXMYH/helios)
+[![Known Vulnerabilities](https://snyk.io/test/github/PXMYH/helios/badge.svg)](https://snyk.io/test/github/PXMYH/helios)
 
 Scrapy spider to crawl and fetch information about real estate information
 
