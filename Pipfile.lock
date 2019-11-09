@@ -70,7 +70,7 @@
                 "sha256:9d98697f088eb1b0fa451391f91afb5e3ebde16bbdb272819fd091151fda4f1a",
                 "sha256:f0b0e4eba956de51238e17573b7087e852dfe9854afd2e9c873f73fc0ca0a6dd"
             ],
-            "markers": "python_version < '3.2'",
+            "markers": "python_version < '3.4'",
             "version": "==1.5"
         },
         "billiard": {
@@ -158,7 +158,7 @@
                 "sha256:254c1d9c79f60c45dfde850850883d5aaa7f19a23f13561243a050d5a7c3fe4c",
                 "sha256:c7d282687a5308319bf3d2e7706e575c635b0a470342641c93bea0ea3b5331df"
             ],
-            "markers": "python_version < '3'",
+            "markers": "python_version == '2.7'",
             "version": "==4.0.2"
         },
         "connexion": {
@@ -554,7 +554,7 @@
                 "sha256:0ec8205a157c80d7acc301c0b18fbd5d44fe655968f5d947b6ecef5290fc35db",
                 "sha256:6cd9a47b597b37cc57de1c05e56fb1a1c9cc9fab04fe78c29acd090418529868"
             ],
-            "markers": "python_version == '3.4.*' or python_version < '3'",
+            "markers": "python_version < '3.6'",
             "version": "==2.3.5"
         },
         "pluggy": {
@@ -711,11 +711,11 @@
         },
         "redis": {
             "hashes": [
-                "sha256:98a22fb750c9b9bb46e75e945dc3f61d0ab30d06117cbb21ff9cd1d315fedd3b",
-                "sha256:c504251769031b0dd7dd5cf786050a6050197c6de0d37778c80c08cb04ae8275"
+                "sha256:3613daad9ce5951e426f460deddd5caf469e08a3af633e9578fc77d362becf62",
+                "sha256:8d0fc278d3f5e1249967cba2eb4a5632d19e45ce5c09442b8422d15ee2c22cc2"
             ],
             "index": "pypi",
-            "version": "==3.3.8"
+            "version": "==3.3.11"
         },
         "requests": {
             "hashes": [
