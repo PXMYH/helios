@@ -15,8 +15,8 @@ install:
   - pip install -r requirements.txt
   - pip install pytest pytest-cov codecov
 
-script:
-  - pytest --cov=./
+#script:
+#  - pytest --cov=./
 
 services:
   - docker
