@@ -18,13 +18,12 @@ install:
   - pip install -r requirements.txt
   - pip install pytest pytest-cov codecov
 
-#script:
+script:
 #  - pytest --cov=./
-
+  - echo "Dummy script"
+  -
 services:
   - docker
-
-
 
 # Push the results back to codecov
 after_success:
@@ -35,4 +34,4 @@ after_success:
   - docker tag $DOCKER_REPO:$COMMIT $DOCKER_REPO:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_REPO:latest
   - docker push $DOCKER_REPO:$TRAVIS_BUILD_NUMBER
-  - codecov
+#  - codecov
