@@ -85,4 +85,4 @@ wcwidth==0.1.9
 werkzeug==1.0.1
 wrapt==1.12.1
 zipp==1.2.0
-zope.interface==5.0.2
+zope.interface==5.1.0
