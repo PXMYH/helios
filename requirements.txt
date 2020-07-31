@@ -58,7 +58,7 @@ pyasn1==0.4.8
 pycparser==2.20
 pydispatcher==2.0.5
 pyhamcrest==1.10.1
-pylint==1.9.5
+pylint==2.5.0
 pyopenssl==19.1.0
 pyparsing==2.4.7
 pyrsistent==0.16.0
